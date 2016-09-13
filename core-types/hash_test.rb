@@ -15,6 +15,7 @@ class HashTest < Minitest::Homework
     ages = {16 => ["Alice", "Bob"], 24 => ["Charlie", "Dave"], 37 => ["Eve"]}
     assert_equal __, ages[16]
     assert_equal __, ages[37]
+    assert_equal __, ages[42]
   end
 
   def test_assignment
@@ -25,6 +26,27 @@ class HashTest < Minitest::Homework
     assert_equal __, stuff["b"]
     stuff["a"] = stuff["a"] + ["apricot"]
     assert_equal __, stuff["a"]
+  end
+  
+  def test_symbol_string
+    ingredients = {:egg => 2, 'flour' => 400}
+    assert_equal __, ingredients["egg"]
+    assert_equal __, ingredients[:egg]
+    assert_equal __, ingredients[:'egg']
+    
+    assert_equal __, ingredients["flour"]
+    assert_equal __, ingredients[:flour]
+    assert_equal __, ingredients[:'flour']
+  end
+  
+  def test_default_value
+    counts = Hash.new(0)
+    assert_equal __, counts['cats']
+    assert_equal __, counts[42]
+    
+    counts['lions'] += 1
+    
+    assert_equal __, counts['lions']
   end
 
   def test_keys
@@ -79,26 +101,6 @@ class HashTest < Minitest::Homework
     h3 = {"a" => "apple"}.merge({"b" => "banana"})
     h4 = {"a" => "apple"}.merge({"a" => "avocado", "b" => "banana"})
     h5 = {"a" => "apple", "b" => "banana"}.merge({"b" => "breadfruit"})
-    
-    expected_h1 = __
-    expected_h2 = __
-    expected_h3 = __
-    expected_h4 = __
-    expected_h5 = __
-
-    assert_equal expected_h1, h1
-    assert_equal expected_h2, h2
-    assert_equal expected_h3, h3
-    assert_equal expected_h4, h4
-    assert_equal expected_h5, h5
-  end
-
-  def test_update
-    h1 = {}.update({})
-    h2 = {}.update({"a" => "apple"})
-    h3 = {"a" => "apple"}.update({"b" => "banana"})
-    h4 = {"a" => "apple"}.update({"a" => "avocado", "b" => "banana"})
-    h5 = {"a" => "apple", "b" => "banana"}.update({"b" => "breadfruit"})
     
     expected_h1 = __
     expected_h2 = __
